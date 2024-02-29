@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1709193849
+::res://::1709199333
 icon.svg::CompressedTexture2D::1730451811002220422::1667010171::1709016683::1::::<><>::
 ::res://Audio/::1709016422
 ::res://Audio/GUI/::1709016683
@@ -7,40 +7,43 @@ click.wav::AudioStreamWAV::2264670340713719466::1667010171::1709016683::1::::<><
 hover.wav::AudioStreamWAV::2783313059713430674::1667010171::1709016683::1::::<><>::
 ::res://Audio/Music/::1709016682
 battleThemeA.mp3::AudioStreamMP3::5551254259914388450::1667010171::1709016682::1::::<><>::
-::res://Audio/SoundEffect/::1709192981
+::res://Audio/SoundEffect/::1709209409
 collectgem.mp3::AudioStreamMP3::6728612293507032098::1667010171::1709016682::1::::<><>::
 Enemigo golpeado.wav::AudioStreamWAV::8093938735981610189::1709078698::1709078739::1::::<><>::
 Enemigo muere.wav::AudioStreamWAV::4230766848098844215::1709080043::1709080047::1::::<><>::
 flecha.wav::AudioStreamWAV::347837897683370009::1709072829::1709072839::1::::<><>::
+Jinetompa.wav::AudioStreamWAV::8098685389705034597::1709209409::1709209418::1::::<><>::
 levelup.ogg::AudioStreamOggVorbis::7741138040157310556::1667010171::1709016682::1::::<><>::
 Lose.ogg::AudioStreamOggVorbis::7330786626808763183::1667010171::1709016682::1::::<><>::
 Tompa.wav::AudioStreamWAV::1687850436452031806::1709192980::1709192981::1::::<><>::
 Victory.wav::AudioStreamWAV::1990736067828300026::1667010171::1709016683::1::::<><>::
-::res://Datos/::1709193122
+::res://Datos/::1709193908
 enemy_spawner.gd::GDScript::-1::1709081230::0::1::::<>Node2D<>::
-enemy_spawner.tscn::PackedScene::3041007215632192515::1709193122::0::1::::<><>::res://Datos/enemy_spawner.gd
+enemy_spawner.tscn::PackedScene::3041007215632192515::1709193908::0::1::::<><>::res://Datos/enemy_spawner.gd
 hit_box.gd::GDScript::-1::1709031818::0::1::::<>Area2D<>::
-hit_box.tscn::PackedScene::5464761154227645507::1709193122::0::1::::<><>::res://Datos/hit_box.gd
+hit_box.tscn::PackedScene::5464761154227645507::1709193908::0::1::::<><>::res://Datos/hit_box.gd
 hurt_box.gd::GDScript::-1::1709077561::0::1::::<>Area2D<>::
-hurt_box.tscn::PackedScene::3989297335414925067::1709193122::0::1::::<><>::res://Datos/hurt_box.gd
+hurt_box.tscn::PackedScene::3989297335414925067::1709193908::0::1::::<><>::res://Datos/hurt_box.gd
 spawn_info.gd::GDScript::-1::1709038346::0::1::::Spawn_info<>Resource<>::
-::res://enemigo/::1709193849
-enemigo.gd::GDScript::-1::1709081884::0::1::::<>CharacterBody2D<>::
-enemigo.tscn::PackedScene::6079230436769732415::1709193849::0::1::::<><>::res://enemigo/enemigo.gd<>uid://cd03r8f3g2evq::::res://Textures/Enemy/Hater.png<>uid://bw3pe51ocdnr4::::res://Datos/hurt_box.tscn<>uid://cj4f22m0vcrd0::::res://Datos/hit_box.tscn<>uid://dnk08uv0edr30::::res://Audio/SoundEffect/Enemigo golpeado.wav
+::res://enemigo/::1709193908
+enemigo.gd::GDScript::-1::1709193863::0::1::::<>CharacterBody2D<>::
+enemigo.tscn::PackedScene::6079230436769732415::1709193908::0::1::::<><>::res://enemigo/enemigo.gd<>uid://cd03r8f3g2evq::::res://Textures/Enemy/Hater.png<>uid://bw3pe51ocdnr4::::res://Datos/hurt_box.tscn<>uid://cj4f22m0vcrd0::::res://Datos/hit_box.tscn<>uid://dnk08uv0edr30::::res://Audio/SoundEffect/Enemigo golpeado.wav
 explosion.gd::GDScript::-1::1709082260::0::1::::<>Sprite2D<>::
-explosion.tscn::PackedScene::1443554244921494872::1709193122::0::1::::<><>::uid://dbc8y24c5ofb::::res://Textures/Enemy/explosion_pixelfied.png<>uid://b1jod2k01udch::::res://Audio/SoundEffect/Enemigo muere.wav<>res://enemigo/explosion.gd
+explosion.tscn::PackedScene::1443554244921494872::1709193908::0::1::::<><>::uid://dbc8y24c5ofb::::res://Textures/Enemy/explosion_pixelfied.png<>uid://b1jod2k01udch::::res://Audio/SoundEffect/Enemigo muere.wav<>res://enemigo/explosion.gd
 ::res://Font/::1709016682
 tenderness.otf::FontFile::8103277770473185796::1667010171::1709016682::1::::<><>::
-::res://jugador/::1709193122
-jugador.gd::GDScript::-1::1709191266::0::1::::<>CharacterBody2D<>::
-jugador.tscn::PackedScene::4696523738912330774::1709193122::0::1::::<><>::res://jugador/jugador.gd<>uid://bosld183teicc::::res://Textures/Jugador/Kotone.png<>uid://bw3pe51ocdnr4::::res://Datos/hurt_box.tscn
-::res://jugador/Attack/::1709193849
+::res://jugador/::1709208755
+jugador.gd::GDScript::-1::1709208755::0::1::::<>CharacterBody2D<>::
+jugador.tscn::PackedScene::4696523738912330774::1709208755::0::1::::<><>::res://jugador/jugador.gd<>uid://bosld183teicc::::res://Textures/Jugador/Kotone.png<>uid://bw3pe51ocdnr4::::res://Datos/hurt_box.tscn
+::res://jugador/Attack/::1709209000
 flecha.gd::GDScript::-1::1709081231::0::1::::<>Area2D<>::
-flecha.tscn::PackedScene::6789277355111797203::1709193122::0::1::::<><>::res://jugador/Attack/flecha.gd<>uid://ccg24an4ibsb1::::res://Textures/Items/Weapons/Flecha.png<>uid://e7q3skaordbd::::res://Audio/SoundEffect/flecha.wav
+flecha.tscn::PackedScene::6789277355111797203::1709193908::0::1::::<><>::res://jugador/Attack/flecha.gd<>uid://ccg24an4ibsb1::::res://Textures/Items/Weapons/Flecha.png<>uid://e7q3skaordbd::::res://Audio/SoundEffect/flecha.wav
+jinetompa.tscn::PackedScene::5924581934700440433::1709208756::0::1::::<><>::res://jugador/Attack/jinetompa.gd<>uid://or0ct4ustqsg::::res://Textures/Jugador/Jinetompa.png
+jinetompa.gd::GDScript::-1::1709209000::0::1::::<>Area2D<>::
 tompa.gd::GDScript::-1::1709193849::0::1::::<>Area2D<>::
-tompa.tscn::PackedScene::8725320818670020378::1709193206::0::1::::<><>::res://jugador/Attack/tompa.gd<>uid://bwiom70p33xar::::res://Textures/Jugador/Tompa.png<>uid://ybuwdrfd1vak::::res://Audio/SoundEffect/Tompa.wav
-::res://Mundo/::1709193122
-mundo.tscn::PackedScene::2959029519100854200::1709193122::0::1::::<><>::uid://cqupl32v7acsv::::res://Textures/grass003_albedo.png<>uid://b76bcbe0fqae5::::res://jugador/jugador.tscn<>uid://bjlc7d5nfdir0::::res://Datos/enemy_spawner.tscn<>uid://csu3bi5pkogm6::::res://enemigo/enemigo.tscn<>res://Datos/spawn_info.gd
+tompa.tscn::PackedScene::8725320818670020378::1709193908::0::1::::<><>::res://jugador/Attack/tompa.gd<>uid://bwiom70p33xar::::res://Textures/Jugador/Tompa.png<>uid://ybuwdrfd1vak::::res://Audio/SoundEffect/Tompa.wav
+::res://Mundo/::1709193908
+mundo.tscn::PackedScene::2959029519100854200::1709193908::0::1::::<><>::uid://cqupl32v7acsv::::res://Textures/grass003_albedo.png<>uid://b76bcbe0fqae5::::res://jugador/jugador.tscn<>uid://bjlc7d5nfdir0::::res://Datos/enemy_spawner.tscn<>uid://csu3bi5pkogm6::::res://enemigo/enemigo.tscn<>res://Datos/spawn_info.gd
 ::res://Textures/::1709083572
 grass003_albedo.png::CompressedTexture2D::5938082332660799457::1709017818::1709017820::1::::<><>::
 ::res://Textures/Enemy/::1709193849
@@ -70,6 +73,8 @@ Flecha.png::CompressedTexture2D::4927296489425397612::1709065929::1709067566::1:
 javelin_3_new.png::CompressedTexture2D::3646775658355780375::1667010171::1709016682::1::::<><>::
 javelin_3_new_attack.png::CompressedTexture2D::675766183030176876::1667010171::1709016683::1::::<><>::
 sword.png::CompressedTexture2D::4616862724681544091::1667010171::1709016683::1::::<><>::
-::res://Textures/Jugador/::1709185663
+::res://Textures/Jugador/::1709207107
+Jinetompa.png::CompressedTexture2D::1019260772834950178::1709207084::1709207107::1::::<><>::
+JinetompaA.png::CompressedTexture2D::5421626275661608954::1709207038::1709207107::1::::<><>::
 Kotone.png::CompressedTexture2D::3406897956384174454::1709022141::1709022502::1::::<><>::
 Tompa.png::CompressedTexture2D::3947963453275271853::1709185062::1709185663::1::::<><>::

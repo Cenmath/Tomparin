@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqn587xw71pc8"]
+
+[ext_resource type="Script" path="res://jugador/Attack/jinetompa.gd" id="1_0lsww"]
+[ext_resource type="Texture2D" uid="uid://or0ct4ustqsg" path="res://Textures/Jugador/Jinetompa.png" id="1_1jr6s"]
+[ext_resource type="AudioStream" uid="uid://dnncfu5q1qaf2" path="res://Audio/SoundEffect/Jinetompa.wav" id="3_ewjla"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alx6b"]
+size = Vector2(26, 31)
+
+[node name="Jinetompa" type="Area2D" groups=["attack"]]
+top_level = true
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_0lsww")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1jr6s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_alx6b")
+disabled = true
+
+[node name="ChargeTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="ChangeDirection" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="StandbyReset" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
+[node name="Charge_jin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ewjla")
+volume_db = -25.0
+pitch_scale = 2.0
+
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="ChangeDirection" to="." method="_on_change_direction_timeout"]
+[connection signal="timeout" from="StandbyReset" to="." method="_on_standby_reset_timeout"]

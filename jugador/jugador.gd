@@ -8,12 +8,14 @@ var last_movement = Vector2.UP
 #Ataques
 var Flecha = preload("res://jugador/Attack/flecha.tscn")
 var Tompa = preload("res://jugador/Attack/tompa.tscn")
+var Jinetompa = preload("res://jugador/Attack/jinetompa.tscn")
 
 #Nodos de ataque
 @onready var FlechaTimer = get_node("%FlechaTimer")
 @onready var FlechaAttackTimer = get_node("%FlechaAttackTimer")
 @onready var TompaTimer = get_node("%TompaTimer")
 @onready var TompaAttackTimer = get_node("%TompaAttackTimer")
+@onready var JinetompaBase = get_node("%JinetompaBase")
 
 #Flecha
 var Flecha_ammo = 0
@@ -26,6 +28,10 @@ var Tompa_ammo = 0
 var Tompa_baseammo = 1
 var Tompa_attackspeed = 3.0
 var Tompa_level = 1
+
+#Jinetompa
+var Jinetompa_ammo = 1
+var Jinetompa_level = 1
 
 #Contra enemigos
 var enemy_close = []
@@ -59,7 +65,7 @@ func movement():
 	
 	velocity = mov.normalized()*movement_speed
 	move_and_slide()
-#ataques
+#ataque
 func attack():
 	if Flecha_level > 0:
 		FlechaTimer.wait_time = Flecha_attackspeed
@@ -69,6 +75,8 @@ func attack():
 		TompaTimer.wait_time = Tompa_attackspeed
 		if TompaTimer.is_stopped():
 			TompaTimer.start()
+	if Jinetompa_level > 0:
+		spawn_jinetompa()
 
 #contador de hp
 func _on_hurt_box_hurt(damage, _angle, _knockback):
@@ -110,6 +118,15 @@ func _on_tompa_attack_timer_timeout():
 			TompaAttackTimer.start()
 		else:
 			TompaAttackTimer.stop()
+
+func spawn_jinetompa():
+	var get_jinetompa_total = JinetompaBase.get_child_count()
+	var calc_spawn = Jinetompa_ammo - get_jinetompa_total
+	while calc_spawn > 0:
+		var jinetompa_spawn = Jinetompa.instantiate()
+		jinetompa_spawn.global_position = global_position
+		JinetompaBase.add_child(jinetompa_spawn)
+		calc_spawn -= 1
 
 #sistema de apuntado
 func get_random_target():
