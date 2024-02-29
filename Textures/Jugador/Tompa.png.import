@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd03r8f3g2evq"
-path="res://.godot/imported/Tompa.png-586b30f93dd6de5f35fca3d0ea206baa.ctex"
+uid="uid://bwiom70p33xar"
+path="res://.godot/imported/Tompa.png-dfbf6d9911704be08a8b7517f8a6fa75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemy/Tompa.png"
-dest_files=["res://.godot/imported/Tompa.png-586b30f93dd6de5f35fca3d0ea206baa.ctex"]
+source_file="res://Textures/Jugador/Tompa.png"
+dest_files=["res://.godot/imported/Tompa.png-dfbf6d9911704be08a8b7517f8a6fa75.ctex"]
 
 [params]
 

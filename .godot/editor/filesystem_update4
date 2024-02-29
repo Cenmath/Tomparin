@@ -6,3 +6,7 @@ res://Datos/hurt_box.tscn
 res://Datos/enemy_spawner.tscn
 res://jugador/Attack/flecha.tscn
 res://enemigo/explosion.tscn
+res://jugador/Attack/tompa.tscn
+res://jugador/Attack/tompa.gd
+res://jugador/jugador.gd
+res://enemigo/enemigo.gd

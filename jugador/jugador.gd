@@ -3,19 +3,29 @@ extends CharacterBody2D
 
 var movement_speed = 40.0
 var hp = 80
+var last_movement = Vector2.UP
 
 #Ataques
 var Flecha = preload("res://jugador/Attack/flecha.tscn")
+var Tompa = preload("res://jugador/Attack/tompa.tscn")
 
 #Nodos de ataque
 @onready var FlechaTimer = get_node("%FlechaTimer")
 @onready var FlechaAttackTimer = get_node("%FlechaAttackTimer")
+@onready var TompaTimer = get_node("%TompaTimer")
+@onready var TompaAttackTimer = get_node("%TompaAttackTimer")
 
 #Flecha
 var Flecha_ammo = 0
 var Flecha_baseammo = 1
 var Flecha_attackspeed = 1.0
 var Flecha_level = 1
+
+#Tompa
+var Tompa_ammo = 0
+var Tompa_baseammo = 1
+var Tompa_attackspeed = 3.0
+var Tompa_level = 1
 
 #Contra enemigos
 var enemy_close = []
@@ -39,6 +49,7 @@ func movement():
 		sprite.flip_h = false
 		
 	if mov != Vector2.ZERO:
+		last_movement = mov
 		if walkTimer.is_stopped():
 			if sprite.frame >= sprite.hframes - 1:
 				sprite.frame = 0
@@ -54,6 +65,11 @@ func attack():
 		FlechaTimer.wait_time = Flecha_attackspeed
 		if FlechaTimer.is_stopped():
 			FlechaTimer.start()
+	if Tompa_level > 0:
+		TompaTimer.wait_time = Tompa_attackspeed
+		if TompaTimer.is_stopped():
+			TompaTimer.start()
+
 #contador de hp
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= damage
@@ -77,6 +93,24 @@ func _on_flecha_attack_timer_timeout():
 			FlechaAttackTimer.start()
 		else:
 			FlechaAttackTimer.stop()
+
+func _on_tompa_timer_timeout():
+	Tompa_ammo += Tompa_baseammo
+	TompaAttackTimer.start()
+
+func _on_tompa_attack_timer_timeout():
+	if Tompa_ammo > 0:
+		var Tompa_attack = Tompa.instantiate()
+		Tompa_attack.position = position
+		Tompa_attack.last_movement = last_movement
+		Tompa_attack.level = Tompa_level
+		add_child(Tompa_attack)
+		Tompa_ammo -= 1
+		if Tompa_ammo > 0:
+			TompaAttackTimer.start()
+		else:
+			TompaAttackTimer.stop()
+
 #sistema de apuntado
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -93,3 +127,4 @@ func _on_enemy_detection_area_body_entered(body):
 func _on_enemy_detection_area_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
+

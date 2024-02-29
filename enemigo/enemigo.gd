@@ -7,7 +7,7 @@ extends CharacterBody2D
 var knockback = Vector2.ZERO
 #Nodos
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var sprite = $Tompa
+@onready var sprite = $Hater
 @onready var anim = $AnimationPlayer
 @onready var snd_hit = $en_hit
 
