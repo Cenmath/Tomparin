@@ -1,0 +1,8 @@
+res://Mundo/mundo.tscn
+res://jugador/jugador.tscn
+res://enemigo/enemigo.tscn
+res://Datos/hit_box.tscn
+res://Datos/hurt_box.tscn
+res://Datos/enemy_spawner.tscn
+res://jugador/Attack/flecha.tscn
+res://enemigo/explosion.tscn

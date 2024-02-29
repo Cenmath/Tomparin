@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bifm1we3j84bk"]
+
+[ext_resource type="Texture2D" uid="uid://cqupl32v7acsv" path="res://Textures/grass003_albedo.png" id="1_evfhx"]
+[ext_resource type="PackedScene" uid="uid://b76bcbe0fqae5" path="res://jugador/jugador.tscn" id="2_5idem"]
+[ext_resource type="PackedScene" uid="uid://bjlc7d5nfdir0" path="res://Datos/enemy_spawner.tscn" id="3_qquva"]
+[ext_resource type="PackedScene" uid="uid://csu3bi5pkogm6" path="res://enemigo/enemigo.tscn" id="4_5clyc"]
+[ext_resource type="Script" path="res://Datos/spawn_info.gd" id="5_i81u2"]
+
+[sub_resource type="Resource" id="Resource_3251m"]
+script = ExtResource("5_i81u2")
+time_start = 0
+time_end = 5
+enemy = ExtResource("4_5clyc")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_4iab0"]
+script = ExtResource("5_i81u2")
+time_start = 5
+time_end = 60
+enemy = ExtResource("4_5clyc")
+enemy_num = 5
+enemy_spawn_delay = 0
+
+[node name="Mundo" type="Node2D"]
+
+[node name="Fondo" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(0, -1)
+texture = ExtResource("1_evfhx")
+region_enabled = true
+region_rect = Rect2(0, 0, 4096, 4096)
+
+[node name="Jugador" parent="." instance=ExtResource("2_5idem")]
+position = Vector2(3, -3)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_qquva")]
+spawns = Array[ExtResource("5_i81u2")]([SubResource("Resource_3251m"), SubResource("Resource_4iab0")])

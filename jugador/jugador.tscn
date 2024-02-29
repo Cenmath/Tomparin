@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://b76bcbe0fqae5"]
+
+[ext_resource type="Script" path="res://jugador/jugador.gd" id="1_6tear"]
+[ext_resource type="Texture2D" uid="uid://bosld183teicc" path="res://Textures/Jugador/Kotone.png" id="1_fcv0b"]
+[ext_resource type="PackedScene" uid="uid://bw3pe51ocdnr4" path="res://Datos/hurt_box.tscn" id="3_inuy8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqmks"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxs3s"]
+size = Vector2(8, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t180o"]
+radius = 371.0
+
+[node name="jugador" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_6tear")
+
+[node name="Kotone" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("1_fcv0b")
+hframes = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_aqmks")
+
+[node name="walkTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[node name="HurtBox" parent="." instance=ExtResource("3_inuy8")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_cxs3s")
+
+[node name="attack" type="Node2D" parent="."]
+
+[node name="FlechaTimer" type="Timer" parent="attack"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="FlechaAttackTimer" type="Timer" parent="attack/FlechaTimer"]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_t180o")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="attack/FlechaTimer" to="." method="_on_flecha_timer_timeout"]
+[connection signal="timeout" from="attack/FlechaTimer/FlechaAttackTimer" to="." method="_on_flecha_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+
+[editable path="HurtBox"]

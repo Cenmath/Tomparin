@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3y1n2p4h18ff"]
+
+[ext_resource type="Script" path="res://jugador/Attack/flecha.gd" id="1_5ckli"]
+[ext_resource type="Texture2D" uid="uid://ccg24an4ibsb1" path="res://Textures/Items/Weapons/Flecha.png" id="2_1ucql"]
+[ext_resource type="AudioStream" uid="uid://e7q3skaordbd" path="res://Audio/SoundEffect/flecha.wav" id="3_tfxm5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgkdx"]
+size = Vector2(6, 16)
+
+[node name="Flecha" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_5ckli")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1ucql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cgkdx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="flecha" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tfxm5")
+volume_db = -5.0
+pitch_scale = 2.0
+autoplay = true
