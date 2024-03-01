@@ -56,8 +56,8 @@ func _physics_process(delta):
 		if abs(distance_dif.x) > 500 or abs(distance_dif.y) > 500:
 			return_speed = 200
 		position += player_angle*return_speed*delta
-	var angle = global_position.angle_to_point(target)
-	if abs(angle) > PI/2:
+	var angle_tar = global_position.angle_to_point(target)
+	if abs(angle_tar) > PI/2:
 		scale.x = -1
 	else:
 		scale.x = 1

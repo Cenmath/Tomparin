@@ -1,8 +1,7 @@
-res://jugador/jugador.tscn
-res://jugador/Attack/jinetompa.gd
-res://jugador/jugador.gd
-res://jugador/Attack/jinetompa.tscn
+res://Objetos/experience_coin.tscn
+res://Objetos/experience_coin.gd
 res://Mundo/mundo.tscn
+res://jugador/jugador.tscn
 res://enemigo/enemigo.tscn
 res://Datos/hit_box.tscn
 res://Datos/hurt_box.tscn
@@ -10,3 +9,8 @@ res://Datos/enemy_spawner.tscn
 res://jugador/Attack/flecha.tscn
 res://enemigo/explosion.tscn
 res://jugador/Attack/tompa.tscn
+res://jugador/Attack/jinetompa.tscn
+res://jugador/jugador.gd
+res://enemigo/explosion.gd
+res://jugador/Attack/jinetompa.gd
+res://enemigo/enemigo.gd

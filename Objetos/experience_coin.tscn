@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bygqj6uwawwds"]
+
+[ext_resource type="Texture2D" uid="uid://b8atj5c5kbji7" path="res://Textures/Items/Gems/Cobre.png" id="1_e6omu"]
+[ext_resource type="Script" path="res://Objetos/experience_coin.gd" id="1_s7qgb"]
+[ext_resource type="AudioStream" uid="uid://5vbb63efue71" path="res://Audio/SoundEffect/Coin.wav" id="3_hwgrq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_byo7v"]
+radius = 16.0
+
+[node name="ExperienceCoin" type="Area2D" groups=["loot"]]
+scale = Vector2(0.25, 0.25)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_s7qgb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e6omu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_byo7v")
+
+[node name="aud_gemc" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hwgrq")
+volume_db = -45.0
+pitch_scale = 1.8
+
+[connection signal="finished" from="aud_gemc" to="." method="_on_aud_gemc_finished"]

@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1709199333
+::res://::1709253558
 icon.svg::CompressedTexture2D::1730451811002220422::1667010171::1709016683::1::::<><>::
 ::res://Audio/::1709016422
 ::res://Audio/GUI/::1709016683
@@ -7,7 +7,8 @@ click.wav::AudioStreamWAV::2264670340713719466::1667010171::1709016683::1::::<><
 hover.wav::AudioStreamWAV::2783313059713430674::1667010171::1709016683::1::::<><>::
 ::res://Audio/Music/::1709016682
 battleThemeA.mp3::AudioStreamMP3::5551254259914388450::1667010171::1709016682::1::::<><>::
-::res://Audio/SoundEffect/::1709209409
+::res://Audio/SoundEffect/::1709257958
+Coin.wav::AudioStreamWAV::2149081416430491482::1709257958::1709257959::1::::<><>::
 collectgem.mp3::AudioStreamMP3::6728612293507032098::1667010171::1709016682::1::::<><>::
 Enemigo golpeado.wav::AudioStreamWAV::8093938735981610189::1709078698::1709078739::1::::<><>::
 Enemigo muere.wav::AudioStreamWAV::4230766848098844215::1709080043::1709080047::1::::<><>::
@@ -17,33 +18,36 @@ levelup.ogg::AudioStreamOggVorbis::7741138040157310556::1667010171::1709016682::
 Lose.ogg::AudioStreamOggVorbis::7330786626808763183::1667010171::1709016682::1::::<><>::
 Tompa.wav::AudioStreamWAV::1687850436452031806::1709192980::1709192981::1::::<><>::
 Victory.wav::AudioStreamWAV::1990736067828300026::1667010171::1709016683::1::::<><>::
-::res://Datos/::1709193908
+::res://Datos/::1709257659
 enemy_spawner.gd::GDScript::-1::1709081230::0::1::::<>Node2D<>::
-enemy_spawner.tscn::PackedScene::3041007215632192515::1709193908::0::1::::<><>::res://Datos/enemy_spawner.gd
+enemy_spawner.tscn::PackedScene::3041007215632192515::1709257659::0::1::::<><>::res://Datos/enemy_spawner.gd
 hit_box.gd::GDScript::-1::1709031818::0::1::::<>Area2D<>::
-hit_box.tscn::PackedScene::5464761154227645507::1709193908::0::1::::<><>::res://Datos/hit_box.gd
+hit_box.tscn::PackedScene::5464761154227645507::1709257659::0::1::::<><>::res://Datos/hit_box.gd
 hurt_box.gd::GDScript::-1::1709077561::0::1::::<>Area2D<>::
-hurt_box.tscn::PackedScene::3989297335414925067::1709193908::0::1::::<><>::res://Datos/hurt_box.gd
+hurt_box.tscn::PackedScene::3989297335414925067::1709257659::0::1::::<><>::res://Datos/hurt_box.gd
 spawn_info.gd::GDScript::-1::1709038346::0::1::::Spawn_info<>Resource<>::
-::res://enemigo/::1709193908
+::res://enemigo/::1709257659
 enemigo.gd::GDScript::-1::1709193863::0::1::::<>CharacterBody2D<>::
-enemigo.tscn::PackedScene::6079230436769732415::1709193908::0::1::::<><>::res://enemigo/enemigo.gd<>uid://cd03r8f3g2evq::::res://Textures/Enemy/Hater.png<>uid://bw3pe51ocdnr4::::res://Datos/hurt_box.tscn<>uid://cj4f22m0vcrd0::::res://Datos/hit_box.tscn<>uid://dnk08uv0edr30::::res://Audio/SoundEffect/Enemigo golpeado.wav
+enemigo.tscn::PackedScene::6079230436769732415::1709257659::0::1::::<><>::res://enemigo/enemigo.gd<>uid://cd03r8f3g2evq::::res://Textures/Enemy/Hater.png<>uid://bw3pe51ocdnr4::::res://Datos/hurt_box.tscn<>uid://cj4f22m0vcrd0::::res://Datos/hit_box.tscn<>uid://dnk08uv0edr30::::res://Audio/SoundEffect/Enemigo golpeado.wav
 explosion.gd::GDScript::-1::1709082260::0::1::::<>Sprite2D<>::
-explosion.tscn::PackedScene::1443554244921494872::1709193908::0::1::::<><>::uid://dbc8y24c5ofb::::res://Textures/Enemy/explosion_pixelfied.png<>uid://b1jod2k01udch::::res://Audio/SoundEffect/Enemigo muere.wav<>res://enemigo/explosion.gd
+explosion.tscn::PackedScene::1443554244921494872::1709257659::0::1::::<><>::uid://dbc8y24c5ofb::::res://Textures/Enemy/explosion_pixelfied.png<>uid://b1jod2k01udch::::res://Audio/SoundEffect/Enemigo muere.wav<>res://enemigo/explosion.gd
 ::res://Font/::1709016682
 tenderness.otf::FontFile::8103277770473185796::1667010171::1709016682::1::::<><>::
-::res://jugador/::1709208755
-jugador.gd::GDScript::-1::1709208755::0::1::::<>CharacterBody2D<>::
-jugador.tscn::PackedScene::4696523738912330774::1709208755::0::1::::<><>::res://jugador/jugador.gd<>uid://bosld183teicc::::res://Textures/Jugador/Kotone.png<>uid://bw3pe51ocdnr4::::res://Datos/hurt_box.tscn
-::res://jugador/Attack/::1709209000
+::res://jugador/::1709257659
+jugador.gd::GDScript::-1::1709246028::0::1::::<>CharacterBody2D<>::
+jugador.tscn::PackedScene::4696523738912330774::1709257659::0::1::::<><>::res://jugador/jugador.gd<>uid://bosld183teicc::::res://Textures/Jugador/Kotone.png<>uid://bw3pe51ocdnr4::::res://Datos/hurt_box.tscn
+::res://jugador/Attack/::1709257659
 flecha.gd::GDScript::-1::1709081231::0::1::::<>Area2D<>::
-flecha.tscn::PackedScene::6789277355111797203::1709193908::0::1::::<><>::res://jugador/Attack/flecha.gd<>uid://ccg24an4ibsb1::::res://Textures/Items/Weapons/Flecha.png<>uid://e7q3skaordbd::::res://Audio/SoundEffect/flecha.wav
-jinetompa.tscn::PackedScene::5924581934700440433::1709208756::0::1::::<><>::res://jugador/Attack/jinetompa.gd<>uid://or0ct4ustqsg::::res://Textures/Jugador/Jinetompa.png
-jinetompa.gd::GDScript::-1::1709209000::0::1::::<>Area2D<>::
+flecha.tscn::PackedScene::6789277355111797203::1709257659::0::1::::<><>::res://jugador/Attack/flecha.gd<>uid://ccg24an4ibsb1::::res://Textures/Items/Weapons/Flecha.png<>uid://e7q3skaordbd::::res://Audio/SoundEffect/flecha.wav
+jinetompa.gd::GDScript::-1::1709217677::0::1::::<>Area2D<>::
+jinetompa.tscn::PackedScene::5924581934700440433::1709257659::0::1::::<><>::res://jugador/Attack/jinetompa.gd<>uid://or0ct4ustqsg::::res://Textures/Jugador/Jinetompa.png<>uid://dnncfu5q1qaf2::::res://Audio/SoundEffect/Jinetompa.wav
 tompa.gd::GDScript::-1::1709193849::0::1::::<>Area2D<>::
-tompa.tscn::PackedScene::8725320818670020378::1709193908::0::1::::<><>::res://jugador/Attack/tompa.gd<>uid://bwiom70p33xar::::res://Textures/Jugador/Tompa.png<>uid://ybuwdrfd1vak::::res://Audio/SoundEffect/Tompa.wav
-::res://Mundo/::1709193908
-mundo.tscn::PackedScene::2959029519100854200::1709193908::0::1::::<><>::uid://cqupl32v7acsv::::res://Textures/grass003_albedo.png<>uid://b76bcbe0fqae5::::res://jugador/jugador.tscn<>uid://bjlc7d5nfdir0::::res://Datos/enemy_spawner.tscn<>uid://csu3bi5pkogm6::::res://enemigo/enemigo.tscn<>res://Datos/spawn_info.gd
+tompa.tscn::PackedScene::8725320818670020378::1709257659::0::1::::<><>::res://jugador/Attack/tompa.gd<>uid://bwiom70p33xar::::res://Textures/Jugador/Tompa.png<>uid://ybuwdrfd1vak::::res://Audio/SoundEffect/Tompa.wav
+::res://Mundo/::1709257678
+mundo.tscn::PackedScene::2959029519100854200::1709257678::0::1::::<><>::uid://cqupl32v7acsv::::res://Textures/grass003_albedo.png<>uid://b76bcbe0fqae5::::res://jugador/jugador.tscn<>uid://bjlc7d5nfdir0::::res://Datos/enemy_spawner.tscn<>uid://csu3bi5pkogm6::::res://enemigo/enemigo.tscn<>res://Datos/spawn_info.gd<>uid://bygqj6uwawwds::::res://Objetos/experience_coin.tscn
+::res://Objetos/::1709257659
+experience_coin.gd::GDScript::-1::1709257587::0::1::::<>Area2D<>::
+experience_coin.tscn::PackedScene::4084328401680056768::1709257659::0::1::::<><>::uid://b8atj5c5kbji7::::res://Textures/Items/Gems/Cobre.png<>res://Objetos/experience_coin.gd
 ::res://Textures/::1709083572
 grass003_albedo.png::CompressedTexture2D::5938082332660799457::1709017818::1709017820::1::::<><>::
 ::res://Textures/Enemy/::1709193849
@@ -56,10 +60,13 @@ exp_progress.png::CompressedTexture2D::8416036949712324489::1667010171::17090166
 health.png::CompressedTexture2D::3218525368507858721::1667010171::1709016683::1::::<><>::
 healthbar.png::CompressedTexture2D::6033774986274158045::1667010171::1709016683::1::::<><>::
 ::res://Textures/Items/::1709016423
-::res://Textures/Items/Gems/::1709016683
+::res://Textures/Items/Gems/::1709245847
+Cobre.png::CompressedTexture2D::4703823798922465852::1709245755::1709245847::1::::<><>::
 Gem_blue.png::CompressedTexture2D::2384827813623740902::1667010171::1709016683::1::::<><>::
 Gem_green.png::CompressedTexture2D::2667153354623395496::1667010171::1709016682::1::::<><>::
 Gem_red.png::CompressedTexture2D::500338194920615831::1667010171::1709016682::1::::<><>::
+Oro.png::CompressedTexture2D::424534976147203436::1709245583::1709245673::1::::<><>::
+Plata.png::CompressedTexture2D::3592038880386264367::1709245637::1709245673::1::::<><>::
 ::res://Textures/Items/Upgrades/::1709016682
 boots_4_green.png::CompressedTexture2D::1001562034780793621::1667010171::1709016682::1::::<><>::
 chunk.png::CompressedTexture2D::2479455579197813377::1667010171::1709016682::1::::<><>::
