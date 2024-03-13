@@ -1,11 +1,13 @@
-res://Textures/GUI
+res://Datos
+res://Textures/Items/Weapons
+res://Font
 res://Audio/SoundEffect
+res://Textures/GUI
 res://Objetos
 res://Textures/Items/Gems
 res://jugador/Attack
 res://Textures/Jugador
 res://enemigo
-res://Datos
 res://Enemigo
 res://Textures/Enemy
 res://Jugador

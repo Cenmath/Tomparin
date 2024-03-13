@@ -46,8 +46,11 @@ var enemy_close = []
 
 #HUD
 @onready var ExpBar = get_node("%ExperienceBar")
-@onready var lbllevel = get_node("HUD/HUD/ExperienceBar/lbl_level")
-
+@onready var lbllevel = get_node("%lbl_level")
+@onready var LevelPanel = get_node("%LevelUP")
+@onready var UpgradeOptions = get_node("%UpgradeOptions")
+@onready var ItemOptions = preload("res://Datos/item_options.tscn")
+@onready var AudLevelUP = get_node("%Aud_LevelUP")
 
 func _ready():
 	attack()
@@ -174,10 +177,9 @@ func calculate_experience(coin_exp):
 	if experience + collected_experience >= exp_required:
 		collected_experience -= exp_required-experience
 		experience_level += 1
-		lbllevel.text = str("Level:", experience_level)
 		experience = 0
 		exp_required = calculate_experiencecap()
-		calculate_experience(0)
+		Levelup()
 	else:
 		experience += collected_experience
 		collected_experience = 0
@@ -189,11 +191,37 @@ func calculate_experiencecap():
 	if experience_level < 20:
 		exp_cap = experience_level*5
 	elif experience_level < 40:
-		exp_cap + 95 * (experience_level-19)*8
+		exp_cap = 95 * (experience_level-19)*8
 	else:
 		exp_cap = 255 + (experience_level-39)*12
+		
 	return exp_cap
 
 func set_ExpBar(set_value = 1, set_max_value = 100):
 	ExpBar.value = set_value
 	ExpBar.max_value = set_max_value
+
+func Levelup():
+	AudLevelUP.play()
+	lbllevel.text = str("Level:", experience_level)
+	var tween = LevelPanel.create_tween()
+	tween.tween_property(LevelPanel,"position",Vector2(220,50),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.play()
+	LevelPanel.visible = true
+	var options = 0
+	var optionsmax = 3
+	while options < optionsmax:
+		var option_choice = ItemOptions.instantiate()
+		UpgradeOptions.add_child(option_choice)
+		options += 1
+	
+	get_tree().paused = true
+
+func upgrade_character(upgrade):
+	var option_children = UpgradeOptions.get_children()
+	for i in option_children:
+		i.queue_free()
+	LevelPanel.visible = false
+	LevelPanel.position = Vector2(800,50)
+	get_tree().paused = false
+	calculate_experience(0)
