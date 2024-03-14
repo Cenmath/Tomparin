@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bifm1we3j84bk"]
+[gd_scene load_steps=9 format=3 uid="uid://bifm1we3j84bk"]
 
 [ext_resource type="Texture2D" uid="uid://cqupl32v7acsv" path="res://Textures/grass003_albedo.png" id="1_evfhx"]
 [ext_resource type="PackedScene" uid="uid://b76bcbe0fqae5" path="res://jugador/jugador.tscn" id="2_5idem"]
 [ext_resource type="PackedScene" uid="uid://bjlc7d5nfdir0" path="res://Datos/enemy_spawner.tscn" id="3_qquva"]
 [ext_resource type="PackedScene" uid="uid://csu3bi5pkogm6" path="res://enemigo/enemigo.tscn" id="4_5clyc"]
 [ext_resource type="Script" path="res://Datos/spawn_info.gd" id="5_i81u2"]
+[ext_resource type="PackedScene" uid="uid://bygqj6uwawwds" path="res://Objetos/experience_coin.tscn" id="6_igku5"]
 
 [sub_resource type="Resource" id="Resource_3251m"]
 script = ExtResource("5_i81u2")
@@ -39,3 +40,7 @@ position = Vector2(3, -3)
 spawns = Array[ExtResource("5_i81u2")]([SubResource("Resource_3251m"), SubResource("Resource_4iab0")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="ExperienceCoin" parent="Loot" instance=ExtResource("6_igku5")]
+position = Vector2(57, -35)
+experience = 20

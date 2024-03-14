@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjijnl50gch3w"
-path="res://.godot/imported/JinetompaA.png-5454dac28e14513eae28fea8cb16df93.ctex"
+uid="uid://or0ct4ustqsg"
+path="res://.godot/imported/Jinetompa.png-c09e974456f97c01b22606543773e972.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Jugador/JinetompaA.png"
-dest_files=["res://.godot/imported/JinetompaA.png-5454dac28e14513eae28fea8cb16df93.ctex"]
+source_file="res://Textures/Items/Weapons/Jinetompa.png"
+dest_files=["res://.godot/imported/Jinetompa.png-c09e974456f97c01b22606543773e972.ctex"]
 
 [params]
 

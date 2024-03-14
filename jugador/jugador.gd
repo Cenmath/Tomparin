@@ -22,21 +22,30 @@ var Jinetompa = preload("res://jugador/Attack/jinetompa.tscn")
 @onready var TompaAttackTimer = get_node("%TompaAttackTimer")
 @onready var JinetompaBase = get_node("%JinetompaBase")
 
+#Mejoras
+var collected_upgrades = []
+var upgrade_options = []
+var armor = 0
+var speed = 0
+var spell_cooldown = 0
+var spell_size = 0
+var additional_attacks = 0
+
 #Flecha
 var Flecha_ammo = 0
-var Flecha_baseammo = 1
+var Flecha_baseammo = 0
 var Flecha_attackspeed = 1.0
-var Flecha_level = 1
+var Flecha_level = 0
 
 #Tompa
 var Tompa_ammo = 0
-var Tompa_baseammo = 1
+var Tompa_baseammo = 0
 var Tompa_attackspeed = 3.0
-var Tompa_level = 1
+var Tompa_level = 0
 
 #Jinetompa
-var Jinetompa_ammo = 1
-var Jinetompa_level = 1
+var Jinetompa_ammo = 0
+var Jinetompa_level = 0
 
 #Contra enemigos
 var enemy_close = []
@@ -212,6 +221,7 @@ func Levelup():
 	var optionsmax = 3
 	while options < optionsmax:
 		var option_choice = ItemOptions.instantiate()
+		option_choice.item = get_random_item()
 		UpgradeOptions.add_child(option_choice)
 		options += 1
 	
@@ -221,7 +231,33 @@ func upgrade_character(upgrade):
 	var option_children = UpgradeOptions.get_children()
 	for i in option_children:
 		i.queue_free()
+	upgrade_options.clear()
+	collected_upgrades.append(upgrade)
 	LevelPanel.visible = false
 	LevelPanel.position = Vector2(800,50)
 	get_tree().paused = false
 	calculate_experience(0)
+	
+func get_random_item():
+	var dblist = []
+	for i in UpgradeDb.UPGRADES:
+		if i in collected_upgrades: 
+			pass
+		elif i in upgrade_options:
+			pass
+		elif UpgradeDb.UPGRADES[i]["type"] == "item": 
+			pass
+		elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0:
+			for n in UpgradeDb.UPGRADES[i]["prerequisite"]:
+				if not n in collected_upgrades:
+					pass
+				else:
+					dblist.append(i)
+		else:
+			dblist.append(i)
+	if dblist.size() > 0:
+		var randomitem = dblist.pick_random()
+		upgrade_options.append(randomitem)
+		return randomitem
+	else:
+		return null

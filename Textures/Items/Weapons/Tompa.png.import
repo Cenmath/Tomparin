@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br7r4k2ssvfq2"
-path="res://.godot/imported/javelin_3_new.png-c2a8e5e6f63e6b577a700a48807a6b39.ctex"
+uid="uid://bwiom70p33xar"
+path="res://.godot/imported/Tompa.png-acba19dacf2892a266c8642afbf5d5bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Weapons/javelin_3_new.png"
-dest_files=["res://.godot/imported/javelin_3_new.png-c2a8e5e6f63e6b577a700a48807a6b39.ctex"]
+source_file="res://Textures/Items/Weapons/Tompa.png"
+dest_files=["res://.godot/imported/Tompa.png-acba19dacf2892a266c8642afbf5d5bd.ctex"]
 
 [params]
 

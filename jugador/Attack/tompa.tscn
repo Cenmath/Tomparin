@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwku02ruhgx75"]
 
 [ext_resource type="Script" path="res://jugador/Attack/tompa.gd" id="1_byxa2"]
-[ext_resource type="Texture2D" uid="uid://bwiom70p33xar" path="res://Textures/Jugador/Tompa.png" id="1_qy6bv"]
+[ext_resource type="Texture2D" uid="uid://bwiom70p33xar" path="res://Textures/Items/Weapons/Tompa.png" id="2_ondyk"]
 [ext_resource type="AudioStream" uid="uid://ybuwdrfd1vak" path="res://Audio/SoundEffect/Tompa.wav" id="3_5ldqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7a0ff"]
@@ -13,7 +13,7 @@ collision_mask = 0
 script = ExtResource("1_byxa2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qy6bv")
+texture = ExtResource("2_ondyk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1)

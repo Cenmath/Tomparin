@@ -15,8 +15,8 @@ var target_array = []
 var angle = Vector2.ZERO
 var reset_pos = Vector2.ZERO
 
-var spr_jin_stb = preload("res://Textures/Jugador/Jinetompa.png")
-var spr_jin_atk = preload("res://Textures/Jugador/JinetompaA.png")
+var spr_jin_stb = preload("res://Textures/Items/Weapons/Jinetompa.png")
+var spr_jin_atk = preload("res://Textures/Items/Weapons/JinetompaA.png")
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $Sprite2D
