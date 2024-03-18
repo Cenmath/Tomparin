@@ -3,6 +3,7 @@ extends CharacterBody2D
 #Estadisticas
 var movement_speed = 40.0
 var hp = 80
+var maxhp = 80
 var last_movement = Vector2.UP
 
 #Level
@@ -62,6 +63,7 @@ var enemy_close = []
 @onready var AudLevelUP = get_node("%Aud_LevelUP")
 
 func _ready():
+	upgrade_character("flecha1")
 	attack()
 	set_ExpBar(experience, calculate_experiencecap())
 #movimiento
@@ -91,11 +93,11 @@ func movement():
 #ataque
 func attack():
 	if Flecha_level > 0:
-		FlechaTimer.wait_time = Flecha_attackspeed
+		FlechaTimer.wait_time = Flecha_attackspeed * (1-spell_cooldown)
 		if FlechaTimer.is_stopped():
 			FlechaTimer.start()
 	if Tompa_level > 0:
-		TompaTimer.wait_time = Tompa_attackspeed
+		TompaTimer.wait_time = Tompa_attackspeed * (1-spell_cooldown)
 		if TompaTimer.is_stopped():
 			TompaTimer.start()
 	if Jinetompa_level > 0:
@@ -103,12 +105,12 @@ func attack():
 
 #contador de hp
 func _on_hurt_box_hurt(damage, _angle, _knockback):
-	hp -= damage
+	hp -= clamp(damage-armor, 1.0, 999.0)
 	print(hp)
 
 
 func _on_flecha_timer_timeout():
-	Flecha_ammo += Flecha_baseammo
+	Flecha_ammo += Flecha_baseammo + additional_attacks
 	FlechaAttackTimer.start()
 
 
@@ -126,7 +128,7 @@ func _on_flecha_attack_timer_timeout():
 			FlechaAttackTimer.stop()
 
 func _on_tompa_timer_timeout():
-	Tompa_ammo += Tompa_baseammo
+	Tompa_ammo += Tompa_baseammo + additional_attacks
 	TompaAttackTimer.start()
 
 func _on_tompa_attack_timer_timeout():
@@ -144,12 +146,17 @@ func _on_tompa_attack_timer_timeout():
 
 func spawn_jinetompa():
 	var get_jinetompa_total = JinetompaBase.get_child_count()
-	var calc_spawn = Jinetompa_ammo - get_jinetompa_total
+	var calc_spawn = (Jinetompa_ammo + additional_attacks) - get_jinetompa_total
 	while calc_spawn > 0:
 		var jinetompa_spawn = Jinetompa.instantiate()
 		jinetompa_spawn.global_position = global_position
 		JinetompaBase.add_child(jinetompa_spawn)
 		calc_spawn -= 1
+	#Para que el Jinetompa actualice stats
+	var get_jinetompa = JinetompaBase.get_children()
+	for i in get_jinetompa:
+		if i.has_method("update_jinetompa"):
+			i.update_jinetompa()
 
 #sistema de apuntado
 func get_random_target():
@@ -228,6 +235,53 @@ func Levelup():
 	get_tree().paused = true
 
 func upgrade_character(upgrade):
+	match upgrade:
+		"flecha1":
+			Flecha_level = 1
+			Flecha_baseammo += 1
+		"flecha2":
+			Flecha_level = 2
+			Flecha_attackspeed -= 0.25
+		"flecha3":
+			Flecha_level = 3
+		"flecha4":
+			Flecha_level = 4
+			Flecha_baseammo += 1
+		"tompa1":
+			Tompa_level = 1
+			Tompa_baseammo += 1
+		"tompa2":
+			Tompa_level = 2
+			Tompa_baseammo += 1
+		"tompa3":
+			Tompa_level = 3
+		"tompa4":
+			Tompa_level = 4
+			Tompa_attackspeed -= 0.5
+		"jinetompa1":
+			Jinetompa_level = 1
+			Jinetompa_ammo = 1
+		"jinetompa2":
+			Jinetompa_level = 2
+		"jinetompa3":
+			Jinetompa_level = 3
+		"jinetompa4":
+			Jinetompa_level = 4
+		"armadura1","armadura2","armadura3","armadura4":
+			armor += 1
+		"velocidad1","velocidad2","velocidad3","velocidad4":
+			movement_speed += 20.0
+		"doujin1","doujin2","doujin3","doujin4":
+			spell_size += 0.10
+		"escrituras1","escrituras2","escrituras3","escrituras4":
+			spell_cooldown += 0.05
+		"agecito1","agecito2":
+			additional_attacks += 1
+		"croissant":
+			hp += 20
+			hp = clamp(hp,0,maxhp)
+	
+	attack()
 	var option_children = UpgradeOptions.get_children()
 	for i in option_children:
 		i.queue_free()
@@ -248,10 +302,11 @@ func get_random_item():
 		elif UpgradeDb.UPGRADES[i]["type"] == "item": 
 			pass
 		elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0:
+			var to_add = true
 			for n in UpgradeDb.UPGRADES[i]["prerequisite"]:
 				if not n in collected_upgrades:
-					pass
-				else:
+					to_add = false
+			if to_add:
 					dblist.append(i)
 		else:
 			dblist.append(i)

@@ -42,5 +42,5 @@ spawns = Array[ExtResource("5_i81u2")]([SubResource("Resource_3251m"), SubResour
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
 [node name="ExperienceCoin" parent="Loot" instance=ExtResource("6_igku5")]
-position = Vector2(57, -35)
+position = Vector2(108, -96)
 experience = 20

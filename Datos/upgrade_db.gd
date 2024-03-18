@@ -31,7 +31,7 @@ const UPGRADES = {
 	"flecha4": {
 		"icon": WEAPON_PATH + "Flecha.png",
 		"displayname": "Flecha",
-		"details": "Has logrado graduarte de la escuela de Mangudai",
+		"details": "Has logrado graduarte de la escuela de Kipchak",
 		"level": "Level: 4",
 		"prerequisite": ["flecha3"],
 		"type": "weapon"
@@ -55,7 +55,7 @@ const UPGRADES = {
 	"jinetompa3": {
 		"icon": WEAPON_PATH + "JinetompaA.png",
 		"displayname": "Jinetompa",
-		"details": "Parece que la economia va bien como para pagar el sueldo a mas de un jinetompa",
+		"details": "Parece que los Jinetompas van motivados al ataque, suelen atacar mas antes de volver",
 		"level": "Level: 3",
 		"prerequisite": ["jinetompa2"],
 		"type": "weapon"
@@ -63,7 +63,7 @@ const UPGRADES = {
 	"jinetompa4": {
 		"icon": WEAPON_PATH + "JinetompaA.png",
 		"displayname": "Jinetompa",
-		"details": "Por fin lograste juntar un ejercito de jinetes, recuerda tener cuidado de una masa de piqueros",
+		"details": "El Jinetompa ha upgradeado a Caballero, lastimosamente no tenemos mejora de Paladin",
 		"level": "Level: 4",
 		"prerequisite": ["jinetompa3"],
 		"type": "weapon"
