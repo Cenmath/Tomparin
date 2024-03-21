@@ -1,14 +1,17 @@
+res://Audio/Music
+res://pantalla principal
+res://Textures/GUI
 res://Datos
+res://Textures/Enemy
+res://jugador/HUD
 res://Textures/Items/Weapons
 res://Font
 res://Audio/SoundEffect
-res://Textures/GUI
 res://Objetos
 res://Textures/Items/Gems
 res://jugador/Attack
 res://Textures/Jugador
 res://enemigo
 res://Enemigo
-res://Textures/Enemy
 res://Jugador
 res://Mundo

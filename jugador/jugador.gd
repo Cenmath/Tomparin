@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-#Estadisticas
+#Base 
 var movement_speed = 40.0
 var hp = 80
 var maxhp = 80
 var last_movement = Vector2.UP
+var time = 0
 
 #Level
 var experience = 0
@@ -61,15 +62,29 @@ var enemy_close = []
 @onready var UpgradeOptions = get_node("%UpgradeOptions")
 @onready var ItemOptions = preload("res://Datos/item_options.tscn")
 @onready var AudLevelUP = get_node("%Aud_LevelUP")
+@onready var HPBar = get_node("%HPBar")
+@onready var LbTimer = get_node("%LbTimer")
+@onready var Weaponscol = get_node("%WeaponsCol")
+@onready var Upgradescol = get_node("%UpgradesCol")
+@onready var Itemcon = preload("res://jugador/HUD/item_con.tscn")
+#Menu
+@onready var Gameover = get_node("%GameOver")
+@onready var Lblresult = get_node("%lbl_result")
+@onready var audvictory = get_node("%Aud_victory")
+@onready var audloss = get_node("%Aud_loss")
+#Señales
+signal playerdeath()
 
 func _ready():
 	upgrade_character("flecha1")
 	attack()
 	set_ExpBar(experience, calculate_experiencecap())
-#movimiento
+	_on_hurt_box_hurt(0,0,0)
+
 func _physics_process(_delta):
 	movement()
 
+#Movimiento
 func movement():
 	var x_mov = Input.get_axis("left","right")
 	var y_mov = Input.get_axis("up","down" )
@@ -106,7 +121,10 @@ func attack():
 #contador de hp
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor, 1.0, 999.0)
-	print(hp)
+	HPBar.max_value = maxhp
+	HPBar.value = hp
+	if hp <= 0:
+		death()
 
 
 func _on_flecha_timer_timeout():
@@ -118,7 +136,7 @@ func _on_flecha_attack_timer_timeout():
 	if Flecha_ammo > 0:
 		var Flecha_attack = Flecha.instantiate()
 		Flecha_attack.position = position
-		Flecha_attack.target = get_random_target()
+		Flecha_attack.target = get_global_mouse_position()
 		Flecha_attack.level = Flecha_level
 		add_child(Flecha_attack)
 		Flecha_ammo -= 1
@@ -280,6 +298,7 @@ func upgrade_character(upgrade):
 		"croissant":
 			hp += 20
 			hp = clamp(hp,0,maxhp)
+	adjust_hud_col(upgrade)
 	
 	attack()
 	var option_children = UpgradeOptions.get_children()
@@ -316,3 +335,48 @@ func get_random_item():
 		return randomitem
 	else:
 		return null
+
+func cambiar_tiempo(argtime = 0):
+	time = argtime
+	var m = int(time/60.0)
+	var s = time % 60
+	if m < 10:
+		m = str(0,m)
+	if s < 10:
+		s = str(0,s)
+	LbTimer.text = str(m,":",s)
+
+func adjust_hud_col(upgrade):
+	var get_upgraded_displaynames = UpgradeDb.UPGRADES[upgrade]["displayname"]
+	var get_type = UpgradeDb.UPGRADES[upgrade]["type"]
+	if get_type != "item":
+		var get_collected_displayname = []
+		for i in collected_upgrades:
+			get_collected_displayname.append(UpgradeDb.UPGRADES[i]["displayname"])
+		if not get_upgraded_displaynames in get_collected_displayname:
+			var new_item = Itemcon.instantiate()
+			new_item.upgrade = upgrade
+			match get_type:
+				"weapon":
+					Weaponscol.add_child(new_item)
+				"upgrade":
+					Upgradescol.add_child(new_item)
+
+func death():
+	Gameover.visible = true
+	emit_signal("playerdeath")
+	get_tree().paused = true
+	var tween = Gameover.create_tween()
+	tween.tween_property(Gameover,"position",Vector2(220,50), 3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.play()
+	if time >= 300:
+		Lblresult.text = "Victoria del Corral"
+		audvictory.play()
+	else:
+		Lblresult.text = "Los Hater te hacen asado"
+		audloss.play()
+
+
+func _on_btn_menu_click_end():
+	get_tree().paused = false
+	var _level = get_tree().change_scene_to_file("res://pantalla principal/menu.tscn")

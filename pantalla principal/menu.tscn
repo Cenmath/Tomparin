@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://qstviwhft1rg"]
+
+[ext_resource type="FontFile" uid="uid://dnpj2h6tb6qme" path="res://Font/tenderness.otf" id="1_lc86j"]
+[ext_resource type="Script" path="res://pantalla principal/menu.gd" id="1_vuoas"]
+[ext_resource type="Texture2D" uid="uid://daq7sr6w6yw4m" path="res://Textures/GUI/Emblema_Titulo.png" id="3_1i0f8"]
+[ext_resource type="PackedScene" uid="uid://dlu3x62rdojj7" path="res://Datos/basic_button.tscn" id="4_2on6u"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vuoas")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 644.0
+offset_bottom = 366.0
+color = Color(0.478431, 0.678431, 1, 0.537255)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.0313726, 0.152941, 0.12549, 1)
+theme_override_fonts/font = ExtResource("1_lc86j")
+theme_override_font_sizes/font_size = 72
+text = "Kotompa Asada"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 1546.0
+offset_bottom = 1802.0
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("3_1i0f8")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 10.0
+offset_right = 2076.0
+offset_bottom = 1802.0
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("3_1i0f8")
+
+[node name="btn_jugar" parent="." instance=ExtResource("4_2on6u")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 250.0
+offset_right = 360.0
+offset_bottom = 280.0
+text = "Jugar
+"
+
+[node name="btn_salir" parent="." instance=ExtResource("4_2on6u")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 290.0
+offset_right = 360.0
+offset_bottom = 320.0
+text = "Salir
+"
+
+[connection signal="click_end" from="btn_jugar" to="." method="_on_btn_jugar_click_end"]
+[connection signal="click_end" from="btn_salir" to="." method="_on_btn_salir_click_end"]

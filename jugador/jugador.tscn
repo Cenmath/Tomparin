@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b76bcbe0fqae5"]
+[gd_scene load_steps=19 format=3 uid="uid://b76bcbe0fqae5"]
 
 [ext_resource type="Script" path="res://jugador/jugador.gd" id="1_6tear"]
 [ext_resource type="Texture2D" uid="uid://bosld183teicc" path="res://Textures/Jugador/Kotone.png" id="1_fcv0b"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://dr515tg4ed3mj" path="res://Textures/GUI/exp_progress.png" id="5_af8pn"]
 [ext_resource type="FontFile" uid="uid://dnpj2h6tb6qme" path="res://Font/tenderness.otf" id="6_rx02a"]
 [ext_resource type="AudioStream" uid="uid://qb3hhnikeuvo" path="res://Audio/SoundEffect/LevelUP.wav" id="7_1orx8"]
+[ext_resource type="Texture2D" uid="uid://cr72nlx78qrcf" path="res://Textures/GUI/healthbar.png" id="8_k62xo"]
+[ext_resource type="Texture2D" uid="uid://bl4cv33h8qyy8" path="res://Textures/GUI/health.png" id="9_tjhht"]
+[ext_resource type="AudioStream" uid="uid://3mleq2qgid5s" path="res://Audio/SoundEffect/Victory.wav" id="10_55mdm"]
+[ext_resource type="AudioStream" uid="uid://cmbrg70cl734b" path="res://Audio/SoundEffect/Lose.wav" id="11_aghnh"]
+[ext_resource type="PackedScene" uid="uid://dlu3x62rdojj7" path="res://Datos/basic_button.tscn" id="12_ai1m2"]
+[ext_resource type="Script" path="res://Mundo/FPS.gd" id="13_gy16t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqmks"]
 radius = 3.0
@@ -37,6 +43,7 @@ hframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
 shape = SubResource("CapsuleShape2D_aqmks")
+disabled = true
 
 [node name="walkTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -105,6 +112,7 @@ offset_bottom = 360.0
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="HUD/HUD"]
 unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -122,6 +130,18 @@ theme_override_font_sizes/font_size = 16
 text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="HPBar" type="TextureProgressBar" parent="HUD/HUD"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.470588)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 155.0
+offset_right = 336.0
+offset_bottom = 163.0
+value = 50.0
+texture_over = ExtResource("8_k62xo")
+texture_progress = ExtResource("9_tjhht")
 
 [node name="LevelUP" type="Panel" parent="HUD/HUD"]
 unique_name_in_owner = true
@@ -153,8 +173,89 @@ offset_bottom = 100.0
 [node name="Aud_LevelUP" type="AudioStreamPlayer" parent="HUD/HUD/LevelUP"]
 unique_name_in_owner = true
 stream = ExtResource("7_1orx8")
+volume_db = -30.0
+pitch_scale = 1.1
+
+[node name="GameOver" type="Panel" parent="HUD/HUD"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 249.0
+offset_top = -271.0
+offset_right = 449.0
+offset_bottom = -21.0
+
+[node name="lbl_result" type="Label" parent="HUD/HUD/GameOver"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("6_rx02a")
+text = "Result"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Aud_victory" type="AudioStreamPlayer" parent="HUD/HUD/GameOver"]
+unique_name_in_owner = true
+stream = ExtResource("10_55mdm")
 volume_db = -15.0
 pitch_scale = 1.1
+
+[node name="Aud_loss" type="AudioStreamPlayer" parent="HUD/HUD/GameOver"]
+unique_name_in_owner = true
+stream = ExtResource("11_aghnh")
+volume_db = -10.0
+pitch_scale = 1.1
+
+[node name="btn_menu" parent="HUD/HUD/GameOver" instance=ExtResource("12_ai1m2")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 200.0
+offset_right = 140.0
+offset_bottom = 230.0
+text = "Menu"
+
+[node name="LbTimer" type="Label" parent="HUD/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 560.0
+offset_top = 20.0
+offset_right = 640.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("6_rx02a")
+theme_override_font_sizes/font_size = 20
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeaponsCol" type="GridContainer" parent="HUD/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 208.0
+offset_bottom = 40.0
+columns = 10
+
+[node name="UpgradesCol" type="GridContainer" parent="HUD/HUD"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 208.0
+offset_bottom = 56.0
+columns = 10
+
+[node name="FPS" type="Label" parent="HUD/HUD"]
+offset_left = 520.0
+offset_top = 20.0
+offset_right = 560.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("6_rx02a")
+theme_override_font_sizes/font_size = 10
+text = "a"
+script = ExtResource("13_gy16t")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="attack/FlechaTimer" to="." method="_on_flecha_timer_timeout"]
@@ -165,5 +266,6 @@ pitch_scale = 1.1
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="click_end" from="HUD/HUD/GameOver/btn_menu" to="." method="_on_btn_menu_click_end"]
 
 [editable path="HurtBox"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6bvfuf8e51tt"]
+
+[ext_resource type="Texture2D" uid="uid://wi6d1xxc43m0" path="res://Textures/GUI/EmptyItem.png" id="1_t4lvr"]
+[ext_resource type="Script" path="res://jugador/HUD/item_con.gd" id="2_ncfc4"]
+
+[node name="ItemCon" type="TextureRect"]
+offset_right = 12.0
+offset_bottom = 12.0
+texture = ExtResource("1_t4lvr")
+script = ExtResource("2_ncfc4")
+
+[node name="ItemTex" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 34.0
+offset_bottom = 34.0
+scale = Vector2(0.3, 0.3)
