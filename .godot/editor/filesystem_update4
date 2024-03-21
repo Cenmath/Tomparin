@@ -1,9 +1,7 @@
-res://jugador/jugador.tscn
-res://Datos/basic_button.tscn
-res://Datos/basic_button.gd
-res://jugador/jugador.gd
+res://enemigo/enemigo_sujeto.tscn
+res://enemigo/enemigo.gd
 res://Mundo/mundo.tscn
-res://Datos/enemy_spawner.gd
+res://jugador/jugador.tscn
 res://enemigo/enemigo_hater.tscn
 res://Objetos/experience_coin.tscn
 res://Datos/item_options.tscn
@@ -17,11 +15,7 @@ res://jugador/Attack/tompa.tscn
 res://jugador/Attack/jinetompa.tscn
 res://jugador/HUD/item_con.tscn
 res://enemigo/enemigo_hater_imperial.tscn
-res://enemigo/enemigo_sujeto.tscn
 res://enemigo/enemigo_ferro.tscn
 res://enemigo/enemigo_final.tscn
-res://pantalla principal/menu.gd
+res://Datos/basic_button.tscn
 res://pantalla principal/menu.tscn
-res://Audio/Music/Aud_music.gd
-res://jugador/Attack/tompa.gd
-res://Mundo/FPS.gd
