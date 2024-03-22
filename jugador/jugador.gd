@@ -36,7 +36,7 @@ var additional_attacks = 0
 #Flecha
 var Flecha_ammo = 0
 var Flecha_baseammo = 0
-var Flecha_attackspeed = 1.0
+var Flecha_attackspeed = 0.75
 var Flecha_level = 0
 
 #Tompa
