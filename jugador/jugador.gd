@@ -72,6 +72,8 @@ var enemy_close = []
 @onready var Lblresult = get_node("%lbl_result")
 @onready var audvictory = get_node("%Aud_victory")
 @onready var audloss = get_node("%Aud_loss")
+#Pausa
+
 #Señales
 signal playerdeath()
 
@@ -375,7 +377,6 @@ func death():
 	else:
 		Lblresult.text = "Los Hater te hacen asado"
 		audloss.play()
-
 
 func _on_btn_menu_click_end():
 	get_tree().paused = false

@@ -1,7 +1,6 @@
-res://jugador/jugador.tscn
-res://enemigo/enemigo.gd
-res://jugador/jugador.gd
 res://Mundo/mundo.tscn
+res://enemigo/enemigo.gd
+res://jugador/jugador.tscn
 res://enemigo/enemigo_hater.tscn
 res://Objetos/experience_coin.tscn
 res://Datos/item_options.tscn
@@ -20,4 +19,4 @@ res://enemigo/enemigo_ferro.tscn
 res://enemigo/enemigo_final.tscn
 res://Datos/basic_button.tscn
 res://pantalla principal/menu.tscn
-res://Datos/enemy_spawner.gd
+res://jugador/jugador.gd
