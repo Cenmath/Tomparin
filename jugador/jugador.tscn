@@ -258,6 +258,26 @@ theme_override_font_sizes/font_size = 10
 text = "a"
 script = ExtResource("13_gy16t")
 
+[node name="Pausa" type="VBoxContainer" parent="HUD/HUD"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 250.0
+offset_top = 150.0
+offset_right = 390.0
+offset_bottom = 214.0
+
+[node name="btn_reanudar" parent="HUD/HUD/Pausa" instance=ExtResource("12_ai1m2")]
+layout_mode = 2
+text = "Reanudar Juego
+"
+
+[node name="btn_salir" parent="HUD/HUD/Pausa" instance=ExtResource("12_ai1m2")]
+layout_mode = 2
+text = "Salir al Menu
+"
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="attack/FlechaTimer" to="." method="_on_flecha_timer_timeout"]
 [connection signal="timeout" from="attack/FlechaTimer/FlechaAttackTimer" to="." method="_on_flecha_attack_timer_timeout"]
@@ -268,5 +288,7 @@ script = ExtResource("13_gy16t")
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 [connection signal="click_end" from="HUD/HUD/GameOver/btn_menu" to="." method="_on_btn_menu_click_end"]
+[connection signal="click_end" from="HUD/HUD/Pausa/btn_reanudar" to="." method="_on_btn_reanudar_click_end"]
+[connection signal="click_end" from="HUD/HUD/Pausa/btn_salir" to="." method="_on_btn_salir_click_end"]
 
 [editable path="HurtBox"]

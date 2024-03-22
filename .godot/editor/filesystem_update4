@@ -19,4 +19,3 @@ res://enemigo/enemigo_ferro.tscn
 res://enemigo/enemigo_final.tscn
 res://Datos/basic_button.tscn
 res://pantalla principal/menu.tscn
-res://jugador/jugador.gd

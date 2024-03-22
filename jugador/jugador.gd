@@ -73,7 +73,7 @@ var enemy_close = []
 @onready var audvictory = get_node("%Aud_victory")
 @onready var audloss = get_node("%Aud_loss")
 #Pausa
-
+@onready var pausa = get_node("%Pausa")
 #Señales
 signal playerdeath()
 
@@ -85,6 +85,8 @@ func _ready():
 
 func _physics_process(_delta):
 	movement()
+	if Input.is_action_just_pressed("Pausar"):
+		pause()
 
 #Movimiento
 func movement():
@@ -381,3 +383,18 @@ func death():
 func _on_btn_menu_click_end():
 	get_tree().paused = false
 	var _level = get_tree().change_scene_to_file("res://pantalla principal/menu.tscn")
+
+func _on_btn_salir_click_end():
+	get_tree().paused = false
+	var _level = get_tree().change_scene_to_file("res://pantalla principal/menu.tscn")
+
+func _on_btn_reanudar_click_end():
+	get_tree().paused = false
+	pausa.visible = false
+
+func pause():
+	get_tree().paused = true
+	var tween = pausa.create_tween()
+	tween.tween_property(pausa,"position",Vector2(250,150), 3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.play()
+	pausa.visible = true
