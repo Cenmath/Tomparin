@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b76bcbe0fqae5"]
+[gd_scene load_steps=25 format=3 uid="uid://b76bcbe0fqae5"]
 
 [ext_resource type="Script" path="res://jugador/jugador.gd" id="1_6tear"]
 [ext_resource type="Texture2D" uid="uid://bosld183teicc" path="res://Textures/Jugador/Kotone.png" id="1_fcv0b"]
+[ext_resource type="Shader" path="res://jugador/jugador.gdshader" id="2_lxb6a"]
 [ext_resource type="PackedScene" uid="uid://bw3pe51ocdnr4" path="res://Datos/hurt_box.tscn" id="3_inuy8"]
 [ext_resource type="Texture2D" uid="uid://doed5ccl66cv5" path="res://Textures/GUI/exp_background.png" id="4_s5n83"]
 [ext_resource type="Texture2D" uid="uid://dr515tg4ed3mj" path="res://Textures/GUI/exp_progress.png" id="5_af8pn"]
@@ -13,6 +14,11 @@
 [ext_resource type="AudioStream" uid="uid://cmbrg70cl734b" path="res://Audio/SoundEffect/Lose.wav" id="11_aghnh"]
 [ext_resource type="PackedScene" uid="uid://dlu3x62rdojj7" path="res://Datos/basic_button.tscn" id="12_ai1m2"]
 [ext_resource type="Script" path="res://Mundo/FPS.gd" id="13_gy16t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsa12"]
+resource_local_to_scene = true
+shader = ExtResource("2_lxb6a")
+shader_parameter/active = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xb1w"]
 radius = 4.12311
@@ -29,11 +35,68 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_640ih"]
 radius = 12.0
 
+[sub_resource type="Animation" id="Animation_aggnj"]
+resource_name = "Hurt"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kotone:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_254f5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kotone:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sh0ts"]
+resource_name = "Alive"
+length = 0.1
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Kotone:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ao66j"]
+_data = {
+"Alive": SubResource("Animation_sh0ts"),
+"Hurt": SubResource("Animation_aggnj"),
+"RESET": SubResource("Animation_254f5")
+}
+
 [node name="jugador" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_6tear")
 
 [node name="Kotone" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fsa12")
 position = Vector2(1.19209e-07, -3)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("1_fcv0b")
@@ -51,6 +114,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="HurtBox" parent="." instance=ExtResource("3_inuy8")]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -89,17 +153,20 @@ monitorable = false
 shape = SubResource("CircleShape2D_t180o")
 
 [node name="GrabArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+[node name="Grab" type="CollisionShape2D" parent="GrabArea"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_f4t4o")
 
 [node name="CollectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+[node name="Collect" type="CollisionShape2D" parent="CollectArea"]
 shape = SubResource("CircleShape2D_640ih")
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -278,6 +345,15 @@ layout_mode = 2
 text = "Salir al Menu
 "
 
+[node name="HurtAnimation" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_ao66j")
+}
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
+[connection signal="area_exited" from="HurtBox" to="HurtBox" method="_on_area_exited"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="attack/FlechaTimer" to="." method="_on_flecha_timer_timeout"]
 [connection signal="timeout" from="attack/FlechaTimer/FlechaAttackTimer" to="." method="_on_flecha_attack_timer_timeout"]

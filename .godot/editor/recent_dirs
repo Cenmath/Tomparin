@@ -1,3 +1,5 @@
+res://Textures/Items/Gems
+res://Objetos
 C:/Users/usuario/Downloads/Kotompa
 res://Textures/GUI
 res://
@@ -11,8 +13,6 @@ res://jugador/HUD
 res://Textures/Items/Weapons
 res://Font
 res://Audio/SoundEffect
-res://Objetos
-res://Textures/Items/Gems
 res://jugador/Attack
 res://Textures/Jugador
 res://enemigo

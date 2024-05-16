@@ -17,6 +17,7 @@ var knockback = Vector2.ZERO
 
 var death_anim = preload("res://enemigo/explosion.tscn")
 var exp_coin = preload("res://Objetos/experience_coin.tscn")
+var Magnet_Train = preload("res://Objetos/Magnet_Train.tscn")
 
 signal remove_from_array(object)
 
@@ -47,6 +48,11 @@ func death():
 	new_coin.global_position = global_position
 	new_coin.experience = experience
 	loot_base.call_deferred("add_child", new_coin)
+	var rand_num = randi() % 100
+	if rand_num == 1:
+		var magnet_train = Magnet_Train.instantiate()
+		magnet_train.global_position = global_position
+		loot_base.call_deferred("add_child",magnet_train)
 	queue_free()
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):

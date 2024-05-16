@@ -1,21 +1,15 @@
-res://Mundo/mundo.tscn
-res://enemigo/enemigo.gd
 res://jugador/jugador.tscn
+res://enemigo/enemigo.gd
+res://jugador/jugador.gdshader
+res://jugador/jugador.gd
+res://Datos/hurt_box.gd
+res://Mundo/mundo.tscn
 res://enemigo/enemigo_hater.tscn
 res://Objetos/experience_coin.tscn
+res://Objetos/Magnet_Train.tscn
 res://Datos/item_options.tscn
 res://Datos/upgrade_db.tscn
-res://Datos/hit_box.tscn
-res://Datos/hurt_box.tscn
 res://Datos/enemy_spawner.tscn
-res://jugador/Attack/flecha.tscn
-res://enemigo/explosion.tscn
-res://jugador/Attack/tompa.tscn
-res://jugador/Attack/jinetompa.tscn
 res://jugador/HUD/item_con.tscn
-res://enemigo/enemigo_hater_imperial.tscn
-res://enemigo/enemigo_sujeto.tscn
-res://enemigo/enemigo_ferro.tscn
-res://enemigo/enemigo_final.tscn
 res://Datos/basic_button.tscn
 res://pantalla principal/menu.tscn

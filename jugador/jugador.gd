@@ -54,7 +54,8 @@ var enemy_close = []
 #Modelo
 @onready var sprite = $Kotone
 @onready var walkTimer = get_node("%walkTimer")
-
+@onready var grabAreaCollision = get_node("%Grab")
+@onready var HurtAnimation = $HurtAnimation
 #HUD
 @onready var ExpBar = get_node("%ExperienceBar")
 @onready var lbllevel = get_node("%lbl_level")
@@ -129,7 +130,6 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	HPBar.value = hp
 	if hp <= 0:
 		death()
-
 
 func _on_flecha_timer_timeout():
 	Flecha_ammo += Flecha_baseammo + additional_attacks
@@ -398,3 +398,9 @@ func pause():
 	tween.tween_property(pausa,"position",Vector2(250,150), 3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
 	pausa.visible = true
+
+func _on_hurt_box_area_entered(_area):
+	HurtAnimation.play("Hurt")
+	
+func _on_hurt_box_area_exited(_area):
+	HurtAnimation.play("Alive")
