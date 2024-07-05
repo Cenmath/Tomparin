@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbgfhyi564mex"]
 
 [ext_resource type="Script" path="res://Objetos/magnet_train.gd" id="1_xy2wj"]
-[ext_resource type="Texture2D" uid="uid://88h1bduupqmw" path="res://Textures/Items/Gems/Gem_blue.png" id="2_pctuy"]
+[ext_resource type="Texture2D" uid="uid://dqts6dga2wrwa" path="res://Textures/Items/Gems/FantaFrutilla.png" id="2_lrsgi"]
 [ext_resource type="AudioStream" uid="uid://c24ni5gruohyg" path="res://Audio/SoundEffect/collectgem.mp3" id="3_5ca87"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3x6a"]
@@ -12,7 +12,7 @@ collision_mask = 0
 script = ExtResource("1_xy2wj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_pctuy")
+texture = ExtResource("2_lrsgi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
