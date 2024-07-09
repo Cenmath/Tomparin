@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://c24ni5gruohyg" path="res://Audio/SoundEffect/collectgem.mp3" id="3_5ca87"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3x6a"]
+size = Vector2(4, 12)
 
 [node name="Magnet_Train" type="Area2D" groups=["loot"]]
 collision_layer = 8
@@ -12,10 +13,10 @@ collision_mask = 0
 script = ExtResource("1_xy2wj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_lrsgi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_m3x6a")
 
 [node name="Aud" type="AudioStreamPlayer" parent="."]

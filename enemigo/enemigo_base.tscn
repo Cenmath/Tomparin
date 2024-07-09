@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cj4f22m0vcrd0" path="res://Datos/hit_box.tscn" id="4_0lamp"]
 [ext_resource type="AudioStream" uid="uid://dnk08uv0edr30" path="res://Audio/SoundEffect/Enemigo golpeado.wav" id="5_unhpm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wtq1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2un1b"]
 size = Vector2(19, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l35g6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_av0h4"]
 size = Vector2(16.75, 10.5)
 
 [node name="EnemigoBase" type="Node2D" groups=["Enemigo"]]
@@ -25,7 +25,7 @@ HurtBoxType = 1
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(-2.5, 5)
-shape = SubResource("RectangleShape2D_7wtq1")
+shape = SubResource("RectangleShape2D_2un1b")
 
 [node name="HitBox" parent="." instance=ExtResource("4_0lamp")]
 collision_layer = 2
@@ -33,7 +33,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2(-2.625, 4.75)
-shape = SubResource("RectangleShape2D_l35g6")
+shape = SubResource("RectangleShape2D_av0h4")
 
 [node name="en_hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_unhpm")
